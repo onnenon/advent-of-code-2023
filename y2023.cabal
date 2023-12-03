@@ -13,6 +13,7 @@ executable y2023
   main-is:          Main.hs
   build-depends:    
     base
+    , y2023
   hs-source-dirs:   
     app
     , lib
@@ -37,6 +38,7 @@ test-suite test
   build-depends:
     base
     , hspec
+    , y2023
   default-language: GHC2021
   other-modules:
     AdventOfCode

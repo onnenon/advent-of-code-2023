@@ -1,4 +1,4 @@
-module AdventOfCode (main, getNumberFromLine) where
+module AdventOfCode where
 
 import Data.Char ( isDigit )
 import Data.List ( find )

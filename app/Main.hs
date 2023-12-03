@@ -1,6 +1,6 @@
 module Main where
 
-import AdventOfCode as Ac (main)
+import AdventOfCode (main)
 
 main :: IO ()
-main = Ac.main
+main = AdventOfCode.main
