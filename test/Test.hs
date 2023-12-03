@@ -27,5 +27,9 @@ cases :: [Case]
 cases = [ Case { description = "Correctly parses a line with two digits"
                , input       = "19qdlpmdrxone7sevennine"
                , expected    = Just 19
+               },
+          Case { description = "Correctly parses a line with two digits"
+               , input       = "ninefivefive2nine5ntvscdfdsmvqgcbxxxt"
+               , expected    = Just 95
                }
         ]
