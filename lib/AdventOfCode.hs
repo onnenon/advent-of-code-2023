@@ -2,7 +2,7 @@ module AdventOfCode where
 
 import Data.Char (isDigit)
 import Data.List (isInfixOf)
-import Data.Maybe
+import Data.Maybe (fromMaybe)
 import Text.Read (readMaybe)
 
 main :: IO ()
