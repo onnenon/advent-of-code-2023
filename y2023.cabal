@@ -1,45 +1,40 @@
-cabal-version:      3.4
-name:               y2023
-version:            0.1.0.0
-author:             Stephen Onnen
-maintainer:         stephen.onnen@gmail.com
-build-type:         Simple
+cabal-version: 3.4
+name:          y2023
+version:       0.1.0.0
+author:        Stephen Onnen
+maintainer:    stephen.onnen@gmail.com
+build-type:    Simple
 
 common warnings
   ghc-options: -Wall
 
 executable y2023
-  import: warnings
+  import:           warnings
   main-is:          Main.hs
-  build-depends:    
-    base
+  build-depends:
+    , base
     , y2023
-  hs-source-dirs:   
-    app
-    , lib
+
+  hs-source-dirs:   app lib
   default-language: GHC2021
-  other-modules:    
-    AdventOfCode
+  other-modules:    AdventOfCode
 
 library
-  import: warnings
+  import:           warnings
   exposed-modules:  AdventOfCode
-  build-depends:    
-    base
-  hs-source-dirs:   lib 
+  build-depends:    base
+  hs-source-dirs:   lib
   default-language: GHC2021
 
 test-suite test
-  import: warnings
-  type: exitcode-stdio-1.0
-  main-is: Test.hs
-  hs-source-dirs:
-    lib
-    , test
+  import:           warnings
+  type:             exitcode-stdio-1.0
+  main-is:          Test.hs
+  hs-source-dirs:   lib test
   build-depends:
-    base
+    , base
     , hspec
     , y2023
+
   default-language: GHC2021
-  other-modules:
-    AdventOfCode
+  other-modules:    AdventOfCode
