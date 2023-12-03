@@ -13,7 +13,6 @@ executable y2023
   main-is:          Main.hs
   build-depends:    
     base
-    , y2023
   hs-source-dirs:   
     app
     , lib
@@ -24,7 +23,8 @@ executable y2023
 library
   import: warnings
   exposed-modules:  AdventOfCode
-  build-depends:    base
+  build-depends:    
+    base
   hs-source-dirs:   lib 
   default-language: GHC2021
 

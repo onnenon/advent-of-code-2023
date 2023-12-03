@@ -1,0 +1,22 @@
+cradle:
+  cabal:
+    - path: "app/Main.hs"
+      component: "y2023:exe:y2023"
+
+    - path: "lib/Main.hs"
+      component: "y2023:exe:y2023"
+
+    - path: "app/AdventOfCode.hs"
+      component: "y2023:exe:y2023"
+
+    - path: "lib/AdventOfCode.hs"
+      component: "y2023:exe:y2023"
+
+    - path: "lib"
+      component: "lib:y2023"
+
+    - path: "lib"
+      component: "y2023:test:test"
+
+    - path: "test"
+      component: "y2023:test:test"
