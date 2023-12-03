@@ -4,35 +4,35 @@ import Data.Foldable (for_)
 import Test.Hspec (Spec, describe, it, shouldBe)
 import Test.Hspec.Runner (defaultConfig, hspecWith)
 
-import AdventOfCode (getNumberFromLine)
+import DayTwo (isGamePossible)
 
 main :: IO ()
 main = hspecWith defaultConfig specs
 
 specs :: Spec
-specs = describe "getNumberFromLine" $ for_ cases test
+specs = describe "isGamePossible" $ for_ cases test
   where
     test Case{..} = it explanation assertion
       where
         explanation = unwords [show input, "-", description]
-        assertion = getNumberFromLine input `shouldBe` expected
+        assertion = isGamePossible input `shouldBe` expected
 
 data Case = Case
     { description :: String
     , input :: String
-    , expected :: Maybe Int
+    , expected :: Bool
     }
 
 cases :: [Case]
 cases =
     [ Case
-        { description = "Correctly parses a line with two digits"
-        , input = "19qdlpmdrxone7sevennine"
-        , expected = Just 19
+        { description = "Correctly IDs Possible Game"
+        , input = "1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue"
+        , expected = True
         }
     , Case
-        { description = "Correctly parses a line with two digits"
-        , input = "ninefivefive2nine5ntvscdfdsmvqgcbxxxt"
-        , expected = Just 95
+        { description = "Correcty IDs Impossible Game"
+        , input = "8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red"
+        , expected = False
         }
     ]

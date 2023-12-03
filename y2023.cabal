@@ -12,29 +12,51 @@ executable y2023
   import:           warnings
   main-is:          Main.hs
   build-depends:
-    , base
+    base
     , y2023
-
   hs-source-dirs:   app lib
   default-language: GHC2021
-  other-modules:    AdventOfCode
+  other-modules:
+    AdventOfCode
+    , DayOne
+    , DayTwo
 
 library
   import:           warnings
-  exposed-modules:  AdventOfCode
+  exposed-modules:  
+    AdventOfCode
+    , DayOne
+    , DayTwo
   build-depends:    base
   hs-source-dirs:   lib
   default-language: GHC2021
 
-test-suite test
+test-suite test-dayOne
   import:           warnings
   type:             exitcode-stdio-1.0
-  main-is:          Test.hs
+  main-is:          TestDayOne.hs
   hs-source-dirs:   lib test
   build-depends:
-    , base
+    base
     , hspec
     , y2023
-
   default-language: GHC2021
-  other-modules:    AdventOfCode
+  other-modules:    
+    AdventOfCode
+    , DayOne
+    , DayTwo
+
+test-suite test-dayTwo
+  import:           warnings
+  type:             exitcode-stdio-1.0
+  main-is:          TestDayTwo.hs
+  hs-source-dirs:   lib test
+  build-depends:
+    base
+    , hspec
+    , y2023
+  default-language: GHC2021
+  other-modules:    
+    AdventOfCode
+    , DayOne
+    , DayTwo
