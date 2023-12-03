@@ -14,6 +14,7 @@ main = do
         Just value -> value) calibrationLines
 
 
+-- | Given a string, return the first and last digit as an Int
 getNumberFromLine :: String -> Maybe Int
 getNumberFromLine line = do
     firstDigit <- find isDigit line

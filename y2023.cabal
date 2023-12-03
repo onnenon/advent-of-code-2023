@@ -13,6 +13,7 @@ executable y2023
   main-is:          Main.hs
   build-depends:    
     base
+    , y2023
   hs-source-dirs:   
     app
     , lib
