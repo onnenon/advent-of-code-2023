@@ -2,19 +2,7 @@ module DayOne where
 
 import Data.Char (isDigit)
 import Data.List (isInfixOf)
-import Data.Maybe (fromMaybe)
 import Text.Read (readMaybe)
-
-main :: IO ()
-main = do
-    calibrationDoc <- readFile "input.txt"
-    let calibrationLines = lines calibrationDoc
-    print $
-        sum $
-            map
-                ( Data.Maybe.fromMaybe 0 . getNumberFromLine
-                )
-                calibrationLines
 
 -- | Given a string, return the first and last digit as an Int
 getNumberFromLine :: String -> Maybe Int
