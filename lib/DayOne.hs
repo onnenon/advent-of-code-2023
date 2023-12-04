@@ -8,7 +8,6 @@ import Text.Read (readMaybe)
 
 data NumPosition = First | Last
 
-
 getLines :: IO [String]
 getLines = do
     fileContents <- readFile "input.txt"
@@ -19,13 +18,13 @@ sumMaybeInts = sum . catMaybes
 
 -- | Given a string, return the first and last digit as an Int
 getNumberForLine :: String -> Maybe Int
-getNumberFromLine (x : xs) = do
+getNumberForLine (x : xs) = do
     firstDigit <- getLineNumOrWord First [x] xs
     lastDigit <- getLineNumOrWord Last [head reversed] (tail reversed)
     readMaybe [firstDigit, lastDigit]
   where
     reversed = reverse (x : xs)
-getNumberFromLine [] = Nothing
+getNumberForLine [] = Nothing
 
 getLineNumOrWord :: NumPosition -> String -> String -> Maybe Char
 getLineNumOrWord pos part [] = findNumberString pos part
