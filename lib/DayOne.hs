@@ -9,10 +9,11 @@ import Text.Read (readMaybe)
 getNumberFromLine :: String -> Maybe Int
 getNumberFromLine (x : xs) = do
     firstDigit <- getFirstNumOrWord [x] xs
-    lastDigit <- getLastNumOrWord " " reversed
+    lastDigit <- getLastNumOrWord [revHed] (tail reversed)
     readMaybe [firstDigit, lastDigit]
   where
     reversed = reverse (x : xs)
+    revHed = head reversed
 getNumberFromLine [] = Nothing
 
 getFirstNumOrWord :: String -> String -> Maybe Char
@@ -20,7 +21,7 @@ getFirstNumOrWord part [] = findNumberString False part
 getFirstNumOrWord part (x : xs) = findNumberString False part <|> getFirstNumOrWord (part ++ [x]) xs
 
 getLastNumOrWord :: String -> String -> Maybe Char
-getLastNumOrWord part [] = findNumberString True $ reverse part
+getLastNumOrWord part [] = findNumberString True part
 getLastNumOrWord part (x : xs) = findNumberString True part <|> getLastNumOrWord (part ++ [x]) xs
 
 findNumberString :: Bool -> String -> Maybe Char

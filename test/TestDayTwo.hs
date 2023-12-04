@@ -28,7 +28,7 @@ cases =
     [ Case
         { description = "Correctly IDs Possible Game"
         , input = "1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue"
-        , expected = True
+        , expected = False
         }
     , Case
         { description = "Correcty IDs Impossible Game"

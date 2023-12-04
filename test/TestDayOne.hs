@@ -35,4 +35,24 @@ cases =
         , input = "ninefivefive2nine5ntvscdfdsmvqgcbxxxt"
         , expected = Just 95
         }
+    , Case
+        { description = "Correctly parses a line with two digits"
+        , input = "2czddtpsrgsbgddsix6gvmxqlsnnine4"
+        , expected = Just 24
+        }
+    , Case
+        { description = "Correctly parses a line with two digits"
+        , input = "sixonemc55"
+        , expected = Just 65
+        }
+    , Case
+        { description = "Correctly parses a line with two digits"
+        , input = "3vpxlzkc"
+        , expected = Just 33
+        }
+    , Case
+        { description = "Correctly parses a line with two digits"
+        , input = "pxlzkcsevenakeadkekeio"
+        , expected = Just 77
+        }
     ]
