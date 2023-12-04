@@ -3,12 +3,22 @@ module DayOne where
 import Control.Applicative
 import Data.Char (isDigit)
 import Data.List (isInfixOf)
+import Data.Maybe (catMaybes)
 import Text.Read (readMaybe)
 
 data NumPosition = First | Last
 
+
+getLines :: IO [String]
+getLines = do
+    fileContents <- readFile "input.txt"
+    return $ lines fileContents
+
+sumMaybeInts :: [Maybe Int] -> Int
+sumMaybeInts = sum . catMaybes
+
 -- | Given a string, return the first and last digit as an Int
-getNumberFromLine :: String -> Maybe Int
+getNumberForLine :: String -> Maybe Int
 getNumberFromLine (x : xs) = do
     firstDigit <- getLineNumOrWord First [x] xs
     lastDigit <- getLineNumOrWord Last [head reversed] (tail reversed)

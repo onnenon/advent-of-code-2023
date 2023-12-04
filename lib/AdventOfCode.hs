@@ -6,11 +6,16 @@ import DayOne (getNumberFromLine)
 
 main :: IO ()
 main = do
-    calibrationDoc <- readFile "input.txt"
-    let calibrationLines = lines calibrationDoc
-    print $
-        sum $
-            map
-                ( Data.Maybe.fromMaybe 0 . getNumberFromLine
-                )
-                calibrationLines
+    inputLines <- getLines
+    let numbers = map getNumberForLine inputLines
+    let calibrationSum = sumMaybeInts numbers
+    putStrLn $ show calibrationSum
+                    
+    -- calibrationDoc <- readFile "input.txt"
+    -- let calibrationLines = lines calibrationDoc
+    -- print $
+    --     sum $
+    --         map
+    --             ( Data.Maybe.fromMaybe 0 . getNumberFromLine
+    --             )
+    --             calibrationLines
