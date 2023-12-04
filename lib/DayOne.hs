@@ -11,11 +11,10 @@ data NumPosition = First | Last
 getNumberFromLine :: String -> Maybe Int
 getNumberFromLine (x : xs) = do
     firstDigit <- getLineNumOrWord First [x] xs
-    lastDigit <- getLineNumOrWord Last [revHed] (tail reversed)
+    lastDigit <- getLineNumOrWord Last [head reversed] (tail reversed)
     readMaybe [firstDigit, lastDigit]
   where
     reversed = reverse (x : xs)
-    revHed = head reversed
 getNumberFromLine [] = Nothing
 
 getLineNumOrWord :: NumPosition -> String -> String -> Maybe Char
