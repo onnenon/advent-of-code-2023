@@ -5,27 +5,25 @@ import Data.Char (isDigit)
 import Data.List (isInfixOf)
 import Text.Read (readMaybe)
 
+data NumPosition = First | Last
+
 -- | Given a string, return the first and last digit as an Int
 getNumberFromLine :: String -> Maybe Int
 getNumberFromLine (x : xs) = do
-    firstDigit <- getFirstNumOrWord [x] xs
-    lastDigit <- getLastNumOrWord [revHed] (tail reversed)
+    firstDigit <- getLineNumOrWord First [x] xs
+    lastDigit <- getLineNumOrWord Last [revHed] (tail reversed)
     readMaybe [firstDigit, lastDigit]
   where
     reversed = reverse (x : xs)
     revHed = head reversed
 getNumberFromLine [] = Nothing
 
-getFirstNumOrWord :: String -> String -> Maybe Char
-getFirstNumOrWord part [] = findNumberString False part
-getFirstNumOrWord part (x : xs) = findNumberString False part <|> getFirstNumOrWord (part ++ [x]) xs
+getLineNumOrWord :: NumPosition -> String -> String -> Maybe Char
+getLineNumOrWord pos part [] = findNumberString pos part
+getLineNumOrWord pos part (x : xs) = findNumberString pos part <|> getLineNumOrWord pos (part ++ [x]) xs
 
-getLastNumOrWord :: String -> String -> Maybe Char
-getLastNumOrWord part [] = findNumberString True part
-getLastNumOrWord part (x : xs) = findNumberString True part <|> getLastNumOrWord (part ++ [x]) xs
-
-findNumberString :: Bool -> String -> Maybe Char
-findNumberString rev p
+findNumberString :: NumPosition -> String -> Maybe Char
+findNumberString pos p
     | isDigit lastPart = Just lastPart
     | "one" `isInfixOf` part = Just '1'
     | "two" `isInfixOf` part = Just '2'
@@ -38,5 +36,7 @@ findNumberString rev p
     | "nine" `isInfixOf` part = Just '9'
     | otherwise = Nothing
   where
-    part = if rev then reverse p else p
+    part = case pos of
+        First -> p
+        Last -> reverse p
     lastPart = last p
